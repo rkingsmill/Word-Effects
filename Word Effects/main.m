@@ -16,7 +16,7 @@ int main(int argc, const char * argv[]) {
             
         // 255 unit long array of characters
         char inputChars[255];
-            char inputNum[1];
+            char inputNum[2];
         
         printf("Input a string: ");
         
@@ -28,6 +28,7 @@ int main(int argc, const char * argv[]) {
         
         //convert char array to an NSString object
         NSString *inputString = [NSString stringWithUTF8String:inputChars];
+        NSMutableString *inputString2 = [inputString mutableCopy];
         
         //print NSString object
         NSLog (@"Input was: %@", inputString);
@@ -36,10 +37,12 @@ int main(int argc, const char * argv[]) {
         printf("Choose from the following list:\n1. Change to uppercase\n2. Change to lowercase\n3. Change to an integer\n4. Make Canadian\n5. Get a response\n6. Replace spaces\n");
             
         //get input
-        fgets(inputNum, 6, stdin);
+        fgets(inputNum, 3, stdin);
         
         //Convert to NSString
         NSString *inputChoice = [NSString stringWithUTF8String:inputNum];
+            NSString *inputChoice2 = [inputChoice mutableCopy];
+            inputChoice = [inputChoice stringByReplacingOccurrencesOfString:@"\n" withString:@""];
             
         //Uppercase
             if ([inputChoice isEqual: @"1"]){
@@ -75,6 +78,7 @@ int main(int argc, const char * argv[]) {
         //respond
             if ([inputChoice isEqual: @"5"]) {
         NSString *lastChar = [inputString substringFromIndex:[inputString length] - 1];
+        lastChar = [lastChar stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         
         if ([lastChar isEqual: @"!"]) {
             
