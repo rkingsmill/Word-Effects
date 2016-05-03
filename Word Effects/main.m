@@ -77,8 +77,8 @@ int main(int argc, const char * argv[]) {
             
         //respond
             if ([inputChoice isEqual: @"5"]) {
+        inputString = [inputString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         NSString *lastChar = [inputString substringFromIndex:[inputString length] - 1];
-        lastChar = [lastChar stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         
         if ([lastChar isEqual: @"!"]) {
             
